@@ -6,7 +6,23 @@ on:
       - main
       
 jobs:
-  test:
+  foo:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.foo.outputs.matrix }}
     steps:
-      - run: jq --version
+      - id: foo
+        run: echo "matrix=[{"os":\"ubuntu-latest\"},{"os":\"macos-latest\"}]" >> "$GITHUB_OUTPUT"
+  
+  bar:
+    needs: [foo]
+    
+    strategy:
+      matrix:
+        include: ${{ fromJSON(needs.foo.outputs.matrix) }}
+    
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+      - name: Hello
+        run: echo "Hello from ${{ matrix.os }}"
