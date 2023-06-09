@@ -9,7 +9,7 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.foo.outputs.matrix }}
+      matrix: ${{ toJSON(steps.foo.outputs.matrix) }}
     steps:
       - run: echo '${{ github.event.repository }}'
       - id: foo
