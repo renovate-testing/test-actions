@@ -11,7 +11,7 @@ jobs:
     outputs:
       matrix: ${{ steps.foo.outputs.matrix }}
     steps:
-      - run: curl --version
+      - run: echo '${{ github.event.repository }}'
       - id: foo
         run: echo "matrix=[{"os":\"ubuntu-latest\"},{"os":\"macos-latest\"}]" >> "$GITHUB_OUTPUT"
   
