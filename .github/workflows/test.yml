@@ -9,9 +9,8 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ toJSON(steps.foo.outputs.matrix) }}
+      matrix: ${{ steps.foo.outputs.matrix }}
     steps:
-      - run: python --version
       - id: foo
         run: echo "matrix=[{"os":\"ubuntu-latest\"},{"os":\"macos-latest\"}]" >> "$GITHUB_OUTPUT"
   
