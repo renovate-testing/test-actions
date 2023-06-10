@@ -11,7 +11,8 @@ jobs:
     outputs:
       matrix: ${{ steps.foo.outputs.matrix }}
     steps:
-      - run: gh --version
+      - run: gh pr list
+
       - id: foo
         run: echo "matrix=[{"os":\"ubuntu-latest\"},{"os":\"macos-latest\"}]" >> "$GITHUB_OUTPUT"
   
