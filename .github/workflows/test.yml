@@ -11,7 +11,7 @@ jobs:
     outputs:
       matrix: ${{ toJSON(steps.foo.outputs.matrix) }}
     steps:
-      - run: echo '${{ toJSON(github.event.repository) }}'
+      - run: python --version
       - id: foo
         run: echo "matrix=[{"os":\"ubuntu-latest\"},{"os":\"macos-latest\"}]" >> "$GITHUB_OUTPUT"
   
