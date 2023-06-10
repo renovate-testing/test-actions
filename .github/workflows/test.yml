@@ -13,7 +13,7 @@ jobs:
     steps:
     
       - name: Event
-        run: echo '${{ github.event }}'
+        run: echo '${{ toJSON(github.event) }}'
 
       - id: foo
         run: echo "matrix=[{"os":\"ubuntu-latest\"},{"os":\"macos-latest\"}]" >> "$GITHUB_OUTPUT"
