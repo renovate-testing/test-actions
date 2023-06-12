@@ -8,6 +8,7 @@ runs:
   using: 'composite'
   steps:
     - run: echo '${{ inputs.event }}'
+      shell: bash
     - run: echo 'FOO=bar' >> "$GITHUB_ENV"
       shell: bash
     - run: echo 'foo=${{ env.FOO }}'
