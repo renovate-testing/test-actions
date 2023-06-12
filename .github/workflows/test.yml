@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/test-composite
         with:
-          event: ${{ github.event }}
+          event: ${{ toJSON(github.event) }}
 
     
       - run: ls-lint --version
