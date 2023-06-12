@@ -1,8 +1,13 @@
 name: 'Composite action'
 description: 'Composite action'
+inputs:
+  event:
+    description: 'GitHub actions event serialized as JSON'
+    required: true
 runs:
   using: 'composite'
   steps:
+    - run: echo '${{ inputs.event }}'
     - run: echo 'FOO=bar' >> "$GITHUB_ENV"
       shell: bash
     - run: echo 'foo=${{ env.FOO }}'
