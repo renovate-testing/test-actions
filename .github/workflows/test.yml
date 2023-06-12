@@ -15,7 +15,7 @@ jobs:
       matrix: ${{ steps.foo.outputs.matrix }}
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/test-composite.yml
+      - uses: ./.github/actions/test-composite
     
       - run: ls-lint --version
     
