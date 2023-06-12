@@ -1,0 +1,7 @@
+name: 'Composite action'
+description: 'Composite action'
+runs:
+  using: 'composite'
+  steps:
+    - run: echo 'FOO=bar' >> "$GITHUB_ENV"
+    - run: echo 'foo=${{ env.FOO }}'
